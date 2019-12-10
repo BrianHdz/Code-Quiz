@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code Quiz</title>
+
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- Main Window -->
+    <div class="card text-center">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-2 highscore">View Highscore</div>
+                <div class="col-sm-8"></div>
+                <div class="col-sm-2 time"></div>
+            </div>
+        </div>
+
+
+
+        <!-- Start Quiz Window -->
+        <div class="card-body">
+            <h5 class="card-title">Coding Quiz Challenge</h5>
+            <p class="card-text">Try to answer the following coding questions 
+                within the time limit!
+                <br>
+                Just know this... wrong answers will cut your remaining time
+                by 10 seconds.
+                <br>
+                Don't let your time drop to zero ;)</p>
+            <a href="#" class="btn btn-primary">Start Quiz</a>
+        </div>
+
+
+
+        <!-- Alternating Questions Window -->
+        <div class="card-body">
+            <h5 class="card-title">Questions</h5>
+            <p class="card-text">A very useful tool used during development 
+                and debugging for printing content to the debugger is:</p>
+            <a href="#" class="btn btn-primary">Answer 1</a>
+            <a href="#" class="btn btn-primary">Answer 2</a>
+            <a href="#" class="btn btn-primary">Answer 3</a>
+            <a href="#" class="btn btn-primary">Answer 4</a>
+            <hr>
+            <small id="emailHelp" class="form-text text-muted">Wrong or right</small>
+
+        </div>
+        <br>
+    </div>
+    <br>
+
+
+
+
+    <!-- High Scores Form -->
+    <div class="container">
+        <form>
+
+            <div class="form-group">
+                <h4>View High Scores</h4>
+                <p id="yourFinal"></p>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Your Name Here">
+                <small id="emailHelp" class="form-text text-muted">Enter your name to be remembered for your
+                    greatness.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Go Back</button>
+            <button type="submit" class="btn btn-primary">Clear High Scores</button>
+
+        </form>
+    </div>
+
+
+
+
+    <!-- JavaScript Link -->
+    <script src="script.js"></script>
+</body>
+
+</html>
