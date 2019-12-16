@@ -7,3 +7,7 @@ btn:hover {
 hr {
     width: 300px;
 }
+
+.hidden {
+    display: none;
+}
