@@ -15,6 +15,10 @@ var questionCounter = 0;
 var availableQuestions = [];
 
 
+var correctPenalty = -15;
+var maxQuestions = 5;
+
+
 
 function startQuiz() {
     if (startWin.display === "none") {
@@ -23,59 +27,80 @@ function startQuiz() {
         startWin.style.display = "none";
         questionWin.style.display = "block";
     }
+
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions];
+    console.log(availableQuestions);
+    getNewQuestion();
 }
 
+function getNewQuestion() {
+    questionCounter++;
+    var questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    console.log(questionIndex);
+    currentQuestion = availableQuestions[questionIndex];
+    console.log(currentQuestion);
+    document.querySelector(".question").innerHTML = currentQuestion.question;
+
+    // trying to get choice options to appear under the question
+    choices.forEach( choice => {
+        var number = choice.dataset['number'];
+        console.log("Choice number " + number)
+        document.querySelector(".choiceText").innerHTML = currentQuestion['choice' + number];
+    })
+}
 
 
 var questions = [
     {
         question: "Questean 1",
 
-        choiceOne: "1",
-        choiceTwo: "2",
-        choiceThree: "3",
-        choiceFour: "4",
+        choice1: "a",
+        choice2: "b",
+        choice3: "c",
+        choice4: "d",
 
-        answer: "1",
+        answer: "a",
     },
     {
         question: "Questean 2",
 
-        choiceOne: "1",
-        choiceTwo: "2",
-        choiceThree: "3",
-        choiceFour: "4",
+        choice1: "a",
+        choice2: "b",
+        choice3: "c",
+        choice4: "d",
 
-        answer: "1",
+        answer: "a",
     },
     {
         question: "Questean 3",
 
-        choiceOne: "1",
-        choiceTwo: "2",
-        choiceThree: "3",
-        choiceFour: "4",
+        choice1: "a",
+        choice2: "b",
+        choice3: "c",
+        choice4: "d",
 
-        answer: "1",
+        answer: "a",
     },
     {
         question: "Questean 4",
 
-        choiceOne: "1",
-        choiceTwo: "2",
-        choiceThree: "3",
-        choiceFour: "4",
+        choice1: "a",
+        choice2: "b",
+        choice3: "c",
+        choice4: "d",
 
-        answer: "1",
+        answer: "a",
     },
     {
         question: "Questean 5",
 
-        choiceOne: "1",
-        choiceTwo: "2",
-        choiceThree: "3",
-        choiceFour: "4",
+        choice1: "a",
+        choice2: "b",
+        choice3: "c",
+        choice4: "d",
 
-        answer: "1",
+        answer: "a",
     },
 ];
