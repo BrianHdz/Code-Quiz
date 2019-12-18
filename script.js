@@ -5,7 +5,8 @@ var startWin = document.querySelector(".startWindow");
 var questionWin = document.querySelector(".questionWindow");
 
 var question = document.querySelector(".questionText");
-var choices = Array.from(document.querySelector(".choiceText"));
+console.log(document.querySelector(".choiceText"));
+var choices = Array.from(document.querySelectorAll(".choiceText"));
 console.log(choices);
 
 var currentQuestion = {};
@@ -15,9 +16,10 @@ var questionCounter = 0;
 var availableQuestions = [];
 
 
-var correctPenalty = -15;
+var incorrectPenalty = -15;
 var maxQuestions = 5;
 
+var timeleft = 75;
 
 
 function startQuiz() {
@@ -33,7 +35,19 @@ function startQuiz() {
     availableQuestions = [...questions];
     console.log(availableQuestions);
     getNewQuestion();
+
+    // The timer function is built in to startQuiz
+
+var downloadTimer = setInterval(function(){
+    document.querySelector(".time").innerHTML = 0 + timeleft;
+    timeleft -= 1;
+    if(timeleft <= -1){
+      clearInterval(downloadTimer);
+    }
+  }, 1000);
+  
 }
+
 
 function getNewQuestion() {
     questionCounter++;
@@ -42,15 +56,18 @@ function getNewQuestion() {
     currentQuestion = availableQuestions[questionIndex];
     console.log(currentQuestion);
     document.querySelector(".question").innerHTML = currentQuestion.question;
-
+   
+    console.log(choices);
+   
     // trying to get choice options to appear under the question
     choices.forEach( choice => {
-        var number = choice.dataset['number'];
+        var number = choice.dataset["number"];
         console.log("Choice number " + number)
-        document.querySelector(".choiceText").innerHTML = currentQuestion['choice' + number];
+        choice.innerHTML = currentQuestion['choice' + number];
     })
 }
 
+// document.querySelector(".choiceText")
 
 var questions = [
     {
