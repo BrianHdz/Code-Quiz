@@ -50,10 +50,10 @@
             <h5 class="card-title">Questions</h5>
             <p class="card-text question">A very useful tool used during development 
                 and debugging for printing content to the debugger is:</p>
-            <button class="btn btn-primary choiceText" data-number="1"></button>
-            <button class="btn btn-primary choiceText" data-number="2"></button>
-            <button class="btn btn-primary choiceText" data-number="3"></button>
-            <button class="btn btn-primary choiceText" data-number="4"></button>
+            <button class="btn btn-primary choiceText" onclick="getNewQuestion ()" data-number="1"></button>
+            <button class="btn btn-primary choiceText" onclick="getNewQuestion ()" data-number="2"></button>
+            <button class="btn btn-primary choiceText" onclick="getNewQuestion ()" data-number="3"></button>
+            <button class="btn btn-primary choiceText" onclick="getNewQuestion ()" data-number="4"></button>
             <hr>
             <small id="emailHelp" class="form-text text-muted">Wrong or right</small>
 
@@ -66,7 +66,7 @@
 
 
     <!-- High Scores Form -->
-    <div class="container hidden">
+    <div class="container hidden highScoreWindow">
         <form>
 
             <div class="form-group">

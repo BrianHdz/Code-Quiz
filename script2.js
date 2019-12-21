@@ -6,14 +6,14 @@ var questionWin = document.querySelector(".questionWindow");
 var highScoreWin = document.querySelector(".highScoreWindow");
 
 var question = document.querySelector(".questionText");
-
+console.log(document.querySelector(".choiceText"));
 var choices = Array.from(document.querySelectorAll(".choiceText"));
 
 
 var currentQuestion = {};
 var acceptingAnswers = true;
 var score = 0;
-var questionCounter = 5;
+var questionCounter = 0;
 
 var incorrectPenalty = -10;
 var maxQuestions = 5;
@@ -31,10 +31,6 @@ function startQuiz() {
     }
 
 
-    questionCounter = 0;
-    score = 0;
-    availableQuestions = [...questions];
-
     getNewQuestion();
 
     // The timer function is built in to startQuiz
@@ -44,34 +40,28 @@ function startQuiz() {
         timeleft -= 1;
         if (timeleft <= -1) {
             clearInterval(downloadTimer);
-        };
+            
+        } console.log(timeleft);
+        
     }, 1000);
 
-}
+};
 
 
-console.log(questionCounter);
+
+
 // This gets the next question out of the array below. Embedding this function into the button class
 function getNewQuestion() {
-    console.log(availableQuestions.length);
-    console.log(questionCounter);
 
-    // This will switch style.display on the Questions Window page to "none" and bring up the High Score Window
-    // Doesn't work because questionCounter variable at the top originally = 0. As soon as I startQuiz() it 
-    // skips to the High Score Window.
-    if (availableQuestions.length === 0) {
-        console.log(availableQuestions.length);
-        console.log(questionCounter);
-        console.log("yo1");
-        // questionWin.style.display === "none";
-        // questionWin.style.display = "block";
+
+    if(availableQuestions.length === 0 || questionCounter < 0){
+        questionWin.display === "none";
+        questionWin.style.display = "block";
+    } else {
         questionWin.style.display = "none";
         highScoreWin.style.display = "block";
-    } else {
-        //questionWin.style.display = "none";
-        // highScoreWin.style.display = "block";
-        console.log("yo2");
-    };
+    }
+
 
     // picking the question happens here
     questionCounter++;
@@ -83,15 +73,15 @@ function getNewQuestion() {
     // trying to get choice options to appear under the question
     choices.forEach(choice => {
         var number = choice.dataset["number"];
+        
         choice.innerHTML = currentQuestion['choice' + number];
     });
 
-    // Splice out the used questions from the index 1 at a time. The problem with this is it happens twice 
-    // each time I click a choice button because this function is called through the getNewQuestion()
-    // and again because that same function is embedded below that monitors the clicked choices.
+    // Splice out the used questions from the index 1 at a time
     availableQuestions.splice(questionIndex, 1);
     console.log(availableQuestions);
 };
+
 
 // Monitor which questions get chosen / clicked.
 choices.forEach(choice => {
@@ -99,20 +89,21 @@ choices.forEach(choice => {
         console.log(e.target);
         var selectedChoice = e.target;
         var selectedAnswer = selectedChoice.dataset["number"];
-        // getNewQuestion();
+        getNewQuestion();
     });
 });
 
 
 
+// All the questions(objects) are in this array.
 var questions = [
     {
-        question: "Which of the following is the correct syntax to display Code Quiz in an alert box using JavaScript?",
+        question: "Questean 1",
 
-        choice1: "alert(“GeeksforGeeks”);",
-        choice2: "alertbox(“GeeksforGeeks”);",
-        choice3: "msg(“GeeksforGeeks”);",
-        choice4: "alert(“GeeksforGeeks”);",
+        choice1: "a",
+        choice2: "b",
+        choice3: "c",
+        choice4: "d",
 
         answer: "a",
     },
@@ -157,5 +148,4 @@ var questions = [
         answer: "a",
     },
 ];
-
 
