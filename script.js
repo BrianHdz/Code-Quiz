@@ -18,8 +18,24 @@ var questionCounter = 5;
 var incorrectPenalty = -10;
 var maxQuestions = 5;
 
-var timeleft = 75;
+var timeleft = 75; //document.querySelector(".time");
+var interval;
 
+// Pause the timer.
+// function setTime() {
+//     var minutes;
+  
+//     if (status === "Working") {
+//       minutes = workMinutesInput.value.trim();
+//     }
+//     clearInterval(interval);
+//     totalSeconds = minutes * 60;
+// }
+
+// function pauseTimer() {
+//     clearInterval(interval);
+//     renderTime();
+//   }
 
 // function to Start the Quiz when clicking the button. Html has an onclick event built in.
 function startQuiz() {
@@ -39,11 +55,11 @@ function startQuiz() {
 
     // The timer function is built in to startQuiz
 
-    var downloadTimer = setInterval(function () {
+    interval = setInterval(function () {
         document.querySelector(".time").innerHTML = 0 + timeleft;
         timeleft -= 1;
         if (timeleft <= -1) {
-            clearInterval(downloadTimer);
+            clearInterval(interval);
         };
     }, 1000);
 
@@ -57,8 +73,6 @@ function getNewQuestion() {
     console.log(questionCounter);
 
     // This will switch style.display on the Questions Window page to "none" and bring up the High Score Window
-    // Doesn't work because questionCounter variable at the top originally = 0. As soon as I startQuiz() it 
-    // skips to the High Score Window.
     if (availableQuestions.length === 0) {
         console.log(availableQuestions.length);
         console.log(questionCounter);
@@ -67,6 +81,7 @@ function getNewQuestion() {
         // questionWin.style.display = "block";
         questionWin.style.display = "none";
         highScoreWin.style.display = "block";
+        clearInterval(interval);
     } else {
         //questionWin.style.display = "none";
         // highScoreWin.style.display = "block";
