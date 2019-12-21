@@ -147,37 +147,37 @@ var questions = [
         choice3: "div",
         choice4: "document.appendChild.div;",
 
-        answer: "a",
+        answer: "document.createElement('div');",
     },
     {
-        question: "Questean 3",
+        question: "What is the HTML tag under which one can write the JavaScript code?",
 
-        choice1: "a",
-        choice2: "b",
-        choice3: "c",
-        choice4: "d",
+        choice1: "javascript",
+        choice2: "script",
+        choice3: "scripted",
+        choice4: "js",
 
-        answer: "a",
+        answer: "script",
     },
     {
-        question: "Questean 4",
+        question: "What is the correct syntax for referring to an external script called “geek.js”?",
 
-        choice1: "a",
-        choice2: "b",
-        choice3: "c",
-        choice4: "d",
+        choice1: "script href=”coolScript.js”",
+        choice2: "script src=”coolScript.js”",
+        choice3: "script ref=”coolScript.js”",
+        choice4: "script name=”coolScript.js”",
 
-        answer: "a",
+        answer: "script src=”coolScript.js”",
     },
     {
-        question: "Questean 5",
+        question: "Which of the following is not a reserved word in JavaScript?",
 
-        choice1: "a",
-        choice2: "b",
-        choice3: "c",
-        choice4: "d",
+        choice1: "interface",
+        choice2: "program",
+        choice3: "throws",
+        choice4: "short",
 
-        answer: "a",
+        answer: "program",
     },
 ];
 
