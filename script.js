@@ -39,7 +39,7 @@ var interval;
 
 // function to Start the Quiz when clicking the button. Html has an onclick event built in.
 function startQuiz() {
-    if (startWin.display === "none") {
+    if (startWin.style.display === "none") {
         startWin.style.display = "block";
     } else {
         startWin.style.display = "none";
@@ -67,7 +67,8 @@ function startQuiz() {
 
 
 console.log(questionCounter);
-// This gets the next question out of the array below. Embedding this function into the button class
+// Get next question out of the array below. 
+// Embedding this function into the button class
 function getNewQuestion() {
     console.log(availableQuestions.length);
     console.log(questionCounter);
@@ -77,33 +78,30 @@ function getNewQuestion() {
         console.log(availableQuestions.length);
         console.log(questionCounter);
         console.log("yo1");
-        // questionWin.style.display === "none";
-        // questionWin.style.display = "block";
         questionWin.style.display = "none";
         highScoreWin.style.display = "block";
+        
+        // This will pause the timer when the high score window displays
         clearInterval(interval);
     } else {
-        //questionWin.style.display = "none";
-        // highScoreWin.style.display = "block";
+        // Nothing happens in here. I was going to use this else statement for something. Don't need it. Erase later.
         console.log("yo2");
     };
 
-    // picking the question happens here
+    // Picking the question out of the array
     questionCounter++;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     document.querySelector(".question").innerHTML = currentQuestion.question;
 
 
-    // trying to get choice options to appear under the question
+    // Get choice options to appear under question
     choices.forEach(choice => {
         var number = choice.dataset["number"];
         choice.innerHTML = currentQuestion['choice' + number];
     });
 
-    // Splice out the used questions from the index 1 at a time. The problem with this is it happens twice 
-    // each time I click a choice button because this function is called through the getNewQuestion()
-    // and again because that same function is embedded below that monitors the clicked choices.
+    // Splice out used questions from index 1 at a time. 
     availableQuestions.splice(questionIndex, 1);
     console.log(availableQuestions);
 };
@@ -114,30 +112,40 @@ choices.forEach(choice => {
         console.log(e.target);
         var selectedChoice = e.target;
         var selectedAnswer = selectedChoice.dataset["number"];
-        // getNewQuestion();
     });
 });
+
+
+// Submit the HIGH SCORE name
+document.getElementById("submitName").addEventListener("click", function addHSNames(evt){
+    evt.preventDefault();
+    var newName = document.getElementById("scorersName");
+    console.log(newName);
+    document.querySelectorAll("#nameList").prepend(newName);
+    
+  });
+
 
 
 
 var questions = [
     {
-        question: "Which of the following is the correct syntax to display Code Quiz in an alert box using JavaScript?",
+        question: "Which of the following is the correct syntax to display CODE QUIZ in an alert box using JavaScript?",
 
-        choice1: "alert(“GeeksforGeeks”);",
-        choice2: "alertbox(“GeeksforGeeks”);",
-        choice3: "msg(“GeeksforGeeks”);",
-        choice4: "alert(“GeeksforGeeks”);",
+        choice1: "alertbox(“Code Quiz”);",
+        choice2: "alert(“Code Quiz”);",
+        choice3: "msg(“Code Quiz”);",
+        choice4: "prompt(“Code Quiz”);",
 
-        answer: "a",
+        answer: "alert(“Code Quiz”);",
     },
     {
-        question: "Questean 2",
+        question: "What syntax can be used to creat a new DIV element using javascript?",
 
-        choice1: "a",
-        choice2: "b",
-        choice3: "c",
-        choice4: "d",
+        choice1: "response.createElement('div');",
+        choice2: "document.createElement('div');",
+        choice3: "div",
+        choice4: "document.appendChild.div;",
 
         answer: "a",
     },
